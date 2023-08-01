@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import Home from './Views/Home'
+import Categories from './Views/Categories'
+import Create from './Views/Create';
+import {Route, Routes} from "react-router-dom"
+import { AppBar , Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Surix SPA
+          </Typography>
+          <Button color="inherit" component={Link} to="/">
+            Home
+          </Button>
+          <Button color="inherit" component={Link} to="/categories">
+            Categories
+          </Button>
+          <Button color="inherit" component={Link} to="/create">
+            Create
+          </Button>
+        </Toolbar>
+      </AppBar>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/create" element={<Create />} />
+        {/* <Route path="/about" element={<About />} /> */}
+      </Routes>
     </div>
   );
 }
-
-export default App;
